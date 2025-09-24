@@ -1,0 +1,3 @@
+dependencies:
+  terraform: 1.11.1
+  aws-vault: 7.2.0
