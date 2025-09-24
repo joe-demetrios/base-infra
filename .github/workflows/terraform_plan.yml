@@ -23,4 +23,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Init
         run: terraform plan -out=tfplan
