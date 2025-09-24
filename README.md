@@ -1,6 +1,6 @@
 # Base Infra
 
-![Terraform CI](https://github.com/{owner}/{repo}/actions/workflows/{workflow-name}/badge.svg)
+[![terraform apply](https://github.com/joe-demetrios/base-infra/actions/workflows/terraform_apply.yml/badge.svg)](https://github.com/joe-demetrios/base-infra/actions/workflows/terraform_apply.yml)
 
 
 
