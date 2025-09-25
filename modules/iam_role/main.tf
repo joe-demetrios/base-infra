@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "this_trust_policy" {
 resource "aws_iam_role" "this"{
     count = var.create ? 1 : 0
     name = var.name
-    assume_role_policy = data.aws_iam_policy_document.trust_policy[0].json
+    assume_role_policy = data.aws_iam_policy_document.this_trust_policy[0].json
     description = var.description
 }
 
