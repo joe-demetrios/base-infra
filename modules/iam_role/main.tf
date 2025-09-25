@@ -33,28 +33,28 @@ resource "aws_iam_role" "this"{
     description = var.description
 }
 
+resource "aws_iam_policy" "this_policy" {
+    count = (var.custom_policy != null && var.create) ? 1 :0 
+
+    name        = "${var.name}_custom_policy"
+    description = "custom policy for ${var.name}"
+
+    # Terraform's "jsonencode" function converts a
+    # Terraform expression result to valid JSON syntax.
+    policy = var.custom_policy
+}
+
+resource "aws_iam_role_policy_attachment" "this_custom" {
+    count = (var.custom_policy != null && var.create) ? 1 :0 
+    role = aws_iam_role.this[0].name
+    policy_arn = aws_iam_policy.this_policy[0].arn
+}
+
 resource "aws_iam_role_policy_attachment" "this_managed"{
     for_each = toset(var.managed_policies)
     role = aws_iam_role.this[0].name
     policy_arn = "arn:aws:iam::aws:policy/${each.value}"
 }
 
-resource "aws_iam_policy" "this_policy" {
-    count = (var.custom_policy != null && var.create ==1) ? 1 :0 
-
-    name        = "${var.name}_custom_policy"
-    path        = "/"
-    description = "custom policy for ${var.name}"
-
-    # Terraform's "jsonencode" function converts a
-    # Terraform expression result to valid JSON syntax.
-    policy = jsonencode(var.custom_policy)
-}
-
-resource "aws_iam_role_policy_attachment" "this_custom" {
-    count = (var.custom_policy != null && var.create == 1 ) ? 1 :0 
-    role = aws_iam_role.this[0].name
-    policy_arn = aws_iam_policy.this_policy[0].arn
-}
 
 

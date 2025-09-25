@@ -1,3 +1,4 @@
 dependencies:
   terraform: 1.11.1
   aws-vault: 7.2.0
+  aws.amazon.com/cli: 2.31.2

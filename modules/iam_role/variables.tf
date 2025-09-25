@@ -34,6 +34,6 @@ variable "managed_policies" {
 
 variable "custom_policy" {
     description = "custom policy attachment for role"
-    type = any
+    type = string
     default = null
 }
