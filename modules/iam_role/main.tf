@@ -1,6 +1,6 @@
 data "aws_iam_openid_connect_provider" "github_actions" {
     count = var.create ? 1 : 0
-    url = "token.actions.githubusercontent.com"
+    url = "https://token.actions.githubusercontent.com"
 }
 
 data "aws_iam_policy_document" "this_trust_policy" {
