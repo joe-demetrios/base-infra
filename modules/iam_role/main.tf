@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "this_trust_policy" {
         actions = ["sts:AssumeRoleWithWebIdentity"]
     principals {
         type = "Federated"
-        identifiers = [data.aws_iam_openid_connect_provider.github_actions.arn]
+        identifiers = [data.aws_iam_openid_connect_provider.github_actions[0].arn]
     }
     condition {
         test = "StringEquals"
