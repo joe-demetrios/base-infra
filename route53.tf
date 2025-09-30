@@ -33,4 +33,20 @@ resource "aws_route53_record" "manor" {
   ttl = 300
 }
 
+resource "aws_route53_record" "apps" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "apps.demetrios.cloud"
+  type    = "AAAA"
+  records = [ "2a01:4f8:1c1e:7b8f::1" ]
+  ttl = 300
+}
+
+resource "aws_route53_record" "wildcard_apps" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "*.apps.demetrios.cloud"
+  type    = "AAAA"
+  records = [ "2a01:4f8:1c1e:7b8f::1" ]
+  ttl = 300
+}
+
 
